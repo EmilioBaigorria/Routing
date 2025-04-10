@@ -22,7 +22,7 @@ export const CursosScreen = () => {
       <p>Cursos</p>
       <div className={styles.cursosListContainer}>
       {cursos.map((el)=>(
-        <CursorCard curso={el}/>
+        <CursorCard key={el.id} curso={el}/>
       ))}
       </div>
     </div>

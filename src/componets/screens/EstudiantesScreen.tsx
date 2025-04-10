@@ -27,7 +27,8 @@ export const EstudiantesScrean = () => {
     <div className={styles.estudiantesMainContainer}>
       <div className={styles.estudiantesListContainer}>
       {alumnos.map((el)=>(
-        <EstudiantesCard estudiante={el}/>
+          <EstudiantesCard key= {el.id}estudiante={el}/>
+        
       ))}
       </div>
       <Button variant="outline-warning">
