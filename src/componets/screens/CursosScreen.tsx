@@ -1,25 +1,30 @@
 import { useEffect, useState } from 'react'
-import { getAlumnos } from '../../http/api'
+import { getCursos } from '../../http/api'
 import { CursorCard } from '../ui/CursorCard/CursorCard'
+import { ICurso } from '../../types/ICurso'
+import styles from "./CursosScreen.module.css"
 
 export const CursosScreen = () => {
 
-  const [cursos,setCursos]=useState([])
+  const [cursos,setCursos]=useState<ICurso[]>([])
 
-  const getalm=async()=>{
-    const alumnos=await getAlumnos()
-    setCursos(alumnos)
+  const getCurs=async()=>{
+    const cursos=await getCursos()
+    setCursos(cursos)
   }
   useEffect(()=>{
-    getalm()
+    getCurs()
   },
   [])
 
   return (
-    <div>
+    <div className={styles.mainCursosContainer}>
+      <p>Cursos</p>
+      <div className={styles.cursosListContainer}>
       {cursos.map((el)=>(
         <CursorCard curso={el}/>
       ))}
+      </div>
     </div>
   )
 }
